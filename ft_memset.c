@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/11 12:40:30 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/11 12:40:33 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
 #include <stdio.h>
 
-int	ft_isalpha(int c)
+void	*ft_memset(void	*ptr, int value, size_t num)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	unsigned char	*p;
+
+	p = (unsigned char *)ptr;
+	while (num-- > 0)
 	{
-		return (1);
+		*p++ = (unsigned char)value;
 	}
-	else
-	{
-		return (0);
-	}
+	return (ptr);
 }

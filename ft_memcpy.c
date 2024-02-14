@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/11 17:28:40 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/11 17:28:43 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include <ctype.h>
-#include <stdio.h>
-
-int	ft_isalpha(int c)
+void	*ft_memcpy(void *dst, const void *restrict src, size_t n)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	unsigned char	*a;
+	unsigned char	*b;
+
+	a = (unsigned char *) dst;
+	b = (unsigned char *) src;
+	if (a == NULL && b == NULL)
 	{
-		return (1);
+		return (NULL);
 	}
-	else
+	while (n-- > 0)
 	{
-		return (0);
+		*a++ = *b++;
 	}
+	return (dst);
 }

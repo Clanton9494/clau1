@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/20 19:26:55 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/20 19:26:56 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
+//#include <stdio.h>
 
-int	ft_isalpha(int c)
+int	ft_strlen(const char *c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	int	a;
+
+	a = 0;
+	while (*c != '\0')
 	{
-		return (1);
+		c++;
+		a++;
 	}
-	else
-	{
-		return (0);
-	}
+	return (a);
 }
+
+/*int main(void)
+{
+    printf("%d", ft_strlen("123456789"));
+}*/

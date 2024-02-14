@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/15 12:16:17 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/15 12:16:21 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_isalpha(int c)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (dest[i] != '\0' && i < size)
+		i++;
+	j = i;
+	while (src[i - j] && i + 1 < size)
 	{
-		return (1);
+		dest[i] = src[i - j];
+		i++;
 	}
-	else
-	{
-		return (0);
-	}
+	if (j < size)
+		dest[i] = '\0';
+	while (src[i - j])
+		i++;
+	return (i);
 }

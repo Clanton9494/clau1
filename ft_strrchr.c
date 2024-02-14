@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/15 17:24:26 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/15 17:24:28 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <ctype.h>
 #include <stdio.h>
 
-int	ft_isalpha(int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	char	*lastcharacter;
+
+	c = c % 256;
+	if (c == '\0')
 	{
-		return (1);
+		while (*str)
+			str++;
+		return ((char *)str);
 	}
-	else
+	lastcharacter = NULL;
+	while (*str)
 	{
-		return (0);
+		if (*str == (char) c)
+		{
+			lastcharacter = (char *)str;
+		}
+		str++;
 	}
+	return (lastcharacter);
 }

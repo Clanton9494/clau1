@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/20 19:42:09 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/20 19:42:12 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_isalpha(int c)
+char	*ft_strnstr(const char *str1, const char *str2, size_t len)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	size_t	i;
+	size_t	j;
+
+	if (*str2 == '\0')
+		return ((char *)str1);
+	i = 0;
+	while (str1[i] != '\0' && i < len)
 	{
-		return (1);
+		j = 0;
+		while (str1[i + j] == str2[j] && (i + j) < len)
+		{
+			if (str2[j + 1] == '\0')
+				return ((char *)&str1[i]);
+			j++;
+		}
+		i++;
 	}
-	else
-	{
-		return (0);
-	}
+	return (NULL);
 }

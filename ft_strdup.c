@@ -1,29 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 16:37:24 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/12 16:37:26 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/23 16:22:44 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/23 16:22:45 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	char	*p;
+	int		count;
+	int		i;
 
+	count = 0;
 	i = 0;
-	while (i + 1 < size && src[i])
+	while (s[count] != '\0')
 	{
-		dest[i] = src[i];
+		count++;
+	}
+	p = malloc((count + 1) * sizeof(char));
+	if (p == NULL)
+	{
+		return (NULL);
+	}
+	while (s[i] != '\0')
+	{
+		p[i] = s[i];
 		i++;
 	}
-	if (size != 0)
-		dest[i] = '\0';
-	while (src[i])
-		i++;
-	return (i);
+	p[i] = '\0';
+	return (p);
+	p = NULL;
+	free(p);
 }
+
+/*int	main(void)
+{
+	printf("%s\n", ft_strdup("Hola que tal"));
+	printf("%s\n", strdup("Hola que tal"));
+}*/

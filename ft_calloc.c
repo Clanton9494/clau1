@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/22 13:04:20 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/22 13:04:22 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdlib.h>
 
-#include <ctype.h>
-#include <stdio.h>
-
-int	ft_isalpha(int c)
+void	*ft_calloc(size_t num, size_t size)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	void	*ptr;
+	char	*b;
+	char	*end;
+
+	ptr = malloc(num * size);
+	b = (char *)ptr;
+	if (ptr != NULL)
 	{
-		return (1);
+		while (num-- > 0)
+		{
+			end = b + size;
+			while (b < end)
+			{
+				*b++ = 0;
+			}
+		}
 	}
-	else
-	{
-		return (0);
-	}
+	return (ptr);
 }

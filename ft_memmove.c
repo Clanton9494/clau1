@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/12 16:04:33 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/12 16:04:36 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_isalpha(int c)
+void	*my_memmove(void	*dest, const void	*src, size_t len)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	char	*d;
+	char	*s;
+	char	*lasts;
+	char	*lastd;
+
+	d = (char *) dest;
+	s = (char *) src;
+	if (d < s)
 	{
-		return (1);
+		while (len--)
+		{
+			*d++ = *s++;
+		}
 	}
 	else
 	{
-		return (0);
+		lasts = s + (len - 1);
+		lastd = d + (len - 1);
+		while (len--)
+		{
+			*lastd-- = *lasts--;
+		}
 	}
+	return (dest);
 }

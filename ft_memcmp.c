@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/20 18:51:29 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/20 18:51:31 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include <ctype.h>
-#include <stdio.h>
-
-int	ft_isalpha(int c)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	unsigned char	*a;
+	unsigned char	*b;
+	size_t			cont;
+
+	a = (unsigned char *) str1;
+	b = (unsigned char *) str2;
+	cont = 0;
+	while (cont < n)
 	{
-		return (1);
+		if (*a != *b)
+		{
+			return (*a - *b);
+		}
+		a++;
+		b++;
+		cont++;
 	}
-	else
-	{
-		return (0);
-	}
+	return (0);
 }

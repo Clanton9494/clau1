@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42madrid.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:49:23 by clanton           #+#    #+#             */
-/*   Updated: 2024/01/20 18:49:25 by clanton          ###   ########.fr       */
+/*   Created: 2024/01/16 15:16:05 by clanton           #+#    #+#             */
+/*   Updated: 2024/01/16 15:16:07 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include <ctype.h>
-#include <stdio.h>
-
-int	ft_isalpha(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	unsigned char	*a;
+	size_t			b;
+
+	a = (unsigned char *) s;
+	b = 0;
+	while (b < n)
 	{
-		return (1);
+		if (*a == (unsigned char) c)
+		{
+			return ((void *)a);
+		}
+		a++;
+		b++;
 	}
-	else
-	{
-		return (0);
-	}
+	return (NULL);
 }
