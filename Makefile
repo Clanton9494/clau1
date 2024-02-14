@@ -6,14 +6,14 @@
 #    By: clanton <clanton@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/10 21:17:15 by clanton           #+#    #+#              #
-#    Updated: 2024/02/12 12:26:01 by clanton          ###   ########.fr        #
+#    Updated: 2024/02/12 17:04:17 by clanton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-SRC = ft_split.c ft_isalpha.c
+SRC = ft_split.c ft_isalpha.c ft_itoa.c ft_strlcpy.c ft_strmapi.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

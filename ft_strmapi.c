@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 21:17:07 by clanton           #+#    #+#             */
-/*   Updated: 2024/02/12 17:04:07 by clanton          ###   ########.fr       */
+/*   Created: 2024/02/12 14:20:53 by clanton           #+#    #+#             */
+/*   Updated: 2024/02/12 17:33:44 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned long	i;
+	unsigned long	l;
+	char			*str;
 
-void	ft_split(char const *s, char c);
-int		ft_isalpha(int c);
-char	*ft_itoa(int n);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-
-#endif
+	l = 0;
+	while (s[l] != '\0')
+		l++;
+	str = (char *)malloc((l + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (i < l)
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+	str = NULL;
+	free (str);
+}

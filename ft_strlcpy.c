@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clanton <clanton@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/10 21:17:07 by clanton           #+#    #+#             */
-/*   Updated: 2024/02/12 17:04:07 by clanton          ###   ########.fr       */
+/*   Created: 2024/02/12 14:01:41 by clanton           #+#    #+#             */
+/*   Updated: 2024/02/12 14:05:14 by clanton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
+#include "libft.h"
 
-void	ft_split(char const *s, char c);
-int		ft_isalpha(int c);
-char	*ft_itoa(int n);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	src_len;
 
-#endif
+	i = 0;
+	while (src[i] != '\0')
+		i++;
+	src_len = i;
+	if (dstsize == 0)
+		return (src_len);
+	i = 0;
+	while (src[i] != '\0' && i < dstsize - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (src_len);
+}
